@@ -54,6 +54,10 @@
                     <span class="nav-icon">🧾</span>
                     <span>Pay Bills</span>
                 </a>
+                <a href="#" class="nav-item" data-page="profile">
+                    <span class="nav-icon">👤</span>
+                    <span>Profile</span>
+                </a>
             </nav>
             
             <div class="sidebar-footer">
@@ -76,76 +80,22 @@
                         <input type="text" placeholder="Search...">
                     </div>
                     <div class="user-profile">
-                        <div class="user-avatar">JD</div>
+                        <div class="user-avatar" id="userAvatar">JD</div>
                     </div>
                 </div>
             </header>
             
             <!-- Overview Page -->
             <div class="page-content" id="overview-page">
-                <div class="cards-grid">
-                    <div class="account-card checking-card">
-                        <div class="card-header">
-                            <div>
-                                <p class="card-label">Checking Account</p>
-                                <p class="account-number">**** **** 4532</p>
-                            </div>
-                            <div class="card-icon">💳</div>
-                        </div>
-                        <div class="card-balance">
-                            <p class="balance-amount">$12,458.50</p>
-                            <p class="balance-change positive">+2.5% this month</p>
-                        </div>
-                    </div>
-                    
-                    <div class="account-card savings-card">
-                        <div class="card-header">
-                            <div>
-                                <p class="card-label">Savings Account</p>
-                                <p class="account-number">**** **** 8721</p>
-                            </div>
-                            <div class="card-icon">💰</div>
-                        </div>
-                        <div class="card-balance">
-                            <p class="balance-amount">$45,280.75</p>
-                            <p class="balance-change positive">+5.2% this month</p>
-                        </div>
-                    </div>
-                    
-                    <div class="account-card credit-card">
-                        <div class="card-header">
-                            <div>
-                                <p class="card-label">Credit Card</p>
-                                <p class="account-number">**** **** 3298</p>
-                            </div>
-                            <div class="card-icon">💎</div>
-                        </div>
-                        <div class="card-balance">
-                            <p class="balance-amount">$2,340.00</p>
-                            <p class="balance-change">Available: $7,660</p>
-                        </div>
-                    </div>
-                    
-                    <div class="account-card loan-card">
-                        <div class="card-header">
-                            <div>
-                                <p class="card-label">Home Loan</p>
-                                <p class="account-number">**** **** 5567</p>
-                            </div>
-                            <div class="card-icon">🏠</div>
-                        </div>
-                        <div class="card-balance">
-                            <p class="balance-amount">$185,500.00</p>
-                            <p class="balance-change">Due: $1,850/mo</p>
-                        </div>
-                    </div>
+                <div class="cards-grid" id="accountCardsGrid">
+                    <!-- Account cards will be dynamically generated -->
                 </div>
                 
                 <div class="content-grid">
                     <div class="recent-transactions">
                         <div class="section-header">
                             <h2>Recent Transactions</h2>
-                            <a href="#" class="view-all">View All →</a>
+                            <a href="#" class="view-all" data-navigate="transactions">View All →</a>
                         </div>
                         <div class="transactions-list" id="recentTransactionsList"></div>
                     </div>
@@ -161,13 +111,13 @@
                                 <span class="action-icon">🧾</span>
                                 <span>Pay Bills</span>
                             </button>
-                            <button class="action-btn" data-action="deposit">
-                                <span class="action-icon">➕</span>
-                                <span>Deposit Check</span>
+                            <button class="action-btn" data-action="loans">
+                                <span class="action-icon">🏦</span>
+                                <span>Pay Loans</span>
                             </button>
-                            <button class="action-btn" data-action="statement">
-                                <span class="action-icon">📄</span>
-                                <span>Statements</span>
+                            <button class="action-btn" data-action="profile">
+                                <span class="action-icon">👤</span>
+                                <span>My Profile</span>
                             </button>
                         </div>
                     </div>
@@ -176,38 +126,8 @@
             
             <!-- Accounts Page -->
             <div class="page-content hidden" id="accounts-page">
-                <div class="accounts-list">
-                    <div class="account-detail-card">
-                        <div class="account-detail-header">
-                            <div class="account-info">
-                                <h3>Checking Account</h3>
-                                <p>Account Number: 1234 5678 9012 4532</p>
-                                <p>Routing Number: 021000021</p>
-                            </div>
-                            <div class="account-balance-large">$12,458.50</div>
-                        </div>
-                        <div class="account-actions">
-                            <button class="btn-secondary">Transfer</button>
-                            <button class="btn-secondary">Statements</button>
-                            <button class="btn-secondary">Details</button>
-                        </div>
-                    </div>
-                    
-                    <div class="account-detail-card">
-                        <div class="account-detail-header">
-                            <div class="account-info">
-                                <h3>Savings Account</h3>
-                                <p>Account Number: 1234 5678 9012 8721</p>
-                                <p>Interest Rate: 2.5% APY</p>
-                            </div>
-                            <div class="account-balance-large">$45,280.75</div>
-                        </div>
-                        <div class="account-actions">
-                            <button class="btn-secondary">Transfer</button>
-                            <button class="btn-secondary">Statements</button>
-                            <button class="btn-secondary">Details</button>
-                        </div>
-                    </div>
+                <div class="accounts-list" id="accountsList">
+                    <!-- Accounts will be dynamically generated -->
                 </div>
             </div>
             
@@ -240,8 +160,6 @@
                                 <label>From Account</label>
                                 <select id="fromAccount" required>
                                     <option value="">Select Account</option>
-                                    <option value="checking">Checking (**** 4532) - $12,458.50</option>
-                                    <option value="savings">Savings (**** 8721) - $45,280.75</option>
                                 </select>
                             </div>
                             
@@ -249,9 +167,6 @@
                                 <label>To Account</label>
                                 <select id="toAccount" required>
                                     <option value="">Select Account</option>
-                                    <option value="checking">Checking (**** 4532)</option>
-                                    <option value="savings">Savings (**** 8721)</option>
-                                    <option value="external">External Account</option>
                                 </select>
                             </div>
                             
@@ -289,78 +204,8 @@
             
             <!-- Loans Page -->
             <div class="page-content hidden" id="loans-page">
-                <div class="loans-grid">
-                    <div class="loan-detail-card">
-                        <div class="loan-header">
-                            <h3>Home Loan</h3>
-                            <span class="loan-status active">Active</span>
-                        </div>
-                        <div class="loan-details">
-                            <div class="loan-info-row">
-                                <span>Loan Amount</span>
-                                <strong>$250,000.00</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Outstanding Balance</span>
-                                <strong>$185,500.00</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Interest Rate</span>
-                                <strong>3.25% APR</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Monthly Payment</span>
-                                <strong>$1,850.00</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Next Payment Due</span>
-                                <strong>Dec 1, 2024</strong>
-                            </div>
-                        </div>
-                        <div class="loan-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 26%"></div>
-                            </div>
-                            <p>26% Paid</p>
-                        </div>
-                        <button class="btn-primary">Make Payment</button>
-                    </div>
-                    
-                    <div class="loan-detail-card">
-                        <div class="loan-header">
-                            <h3>Auto Loan</h3>
-                            <span class="loan-status active">Active</span>
-                        </div>
-                        <div class="loan-details">
-                            <div class="loan-info-row">
-                                <span>Loan Amount</span>
-                                <strong>$35,000.00</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Outstanding Balance</span>
-                                <strong>$22,450.00</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Interest Rate</span>
-                                <strong>4.75% APR</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Monthly Payment</span>
-                                <strong>$650.00</strong>
-                            </div>
-                            <div class="loan-info-row">
-                                <span>Next Payment Due</span>
-                                <strong>Dec 1, 2024</strong>
-                            </div>
-                        </div>
-                        <div class="loan-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 36%"></div>
-                            </div>
-                            <p>36% Paid</p>
-                        </div>
-                        <button class="btn-primary">Make Payment</button>
-                    </div>
+                <div class="loans-grid" id="loansGrid">
+                    <!-- Loans will be dynamically generated -->
                 </div>
             </div>
             
@@ -374,11 +219,13 @@
                                 <label>Payee</label>
                                 <select id="payee" required>
                                     <option value="">Select Payee</option>
-                                    <option value="electricity">Electricity Company</option>
-                                    <option value="internet">Internet Provider</option>
-                                    <option value="water">Water Department</option>
-                                    <option value="phone">Phone Company</option>
-                                    <option value="other">Other</option>
+                                    <option value="Electricity Company">Electricity Company</option>
+                                    <option value="Internet Provider">Internet Provider</option>
+                                    <option value="Water Department">Water Department</option>
+                                    <option value="Phone Company">Phone Company</option>
+                                    <option value="Gas Company">Gas Company</option>
+                                    <option value="Insurance">Insurance</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                             
@@ -386,8 +233,6 @@
                                 <label>From Account</label>
                                 <select id="billFromAccount" required>
                                     <option value="">Select Account</option>
-                                    <option value="checking">Checking (**** 4532) - $12,458.50</option>
-                                    <option value="savings">Savings (**** 8721) - $45,280.75</option>
                                 </select>
                             </div>
                             
@@ -412,28 +257,82 @@
                     
                     <div class="recent-bills-card">
                         <h3>Recent Bill Payments</h3>
-                        <div class="bills-list">
-                            <div class="bill-item">
-                                <div class="bill-info">
-                                    <strong>Electricity Company</strong>
-                                    <span>Nov 15, 2024</span>
-                                </div>
-                                <div class="bill-amount">$125.50</div>
+                        <div class="bills-list" id="recentBillsList">
+                            <!-- Recent bills will be dynamically generated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Page -->
+            <div class="page-content hidden" id="profile-page">
+                <div class="profile-container">
+                    <div class="profile-card">
+                        <h2>My Profile</h2>
+                        <div class="profile-avatar-section">
+                            <div class="profile-avatar-large" id="profileAvatarLarge">JD</div>
+                            <h3 id="profileNameDisplay">John Doe</h3>
+                        </div>
+                        
+                        <form id="profileForm" class="profile-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="profileName" placeholder="Enter your full name" required>
                             </div>
-                            <div class="bill-item">
-                                <div class="bill-info">
-                                    <strong>Internet Provider</strong>
-                                    <span>Nov 10, 2024</span>
-                                </div>
-                                <div class="bill-amount">$79.99</div>
+                            
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="profileEmail" placeholder="Enter your email" required>
                             </div>
-                            <div class="bill-item">
-                                <div class="bill-info">
-                                    <strong>Water Department</strong>
-                                    <span>Nov 5, 2024</span>
-                                </div>
-                                <div class="bill-amount">$45.20</div>
+                            
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="profilePhone" placeholder="Enter your phone number" required>
                             </div>
+                            
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" id="profileAddress" placeholder="Enter your address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" id="profileCity" placeholder="Enter your city" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>State</label>
+                                    <input type="text" id="profileState" placeholder="State" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>ZIP Code</label>
+                                    <input type="text" id="profileZip" placeholder="ZIP" required>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-stats-card">
+                        <h3>Account Statistics</h3>
+                        <div class="stat-item">
+                            <span>Member Since</span>
+                            <strong id="memberSince">Jan 2024</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Total Transactions</span>
+                            <strong id="totalTransactions">0</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Total Accounts</span>
+                            <strong id="totalAccounts">4</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Active Loans</span>
+                            <strong id="activeLoans">2</strong>
                         </div>
                     </div>
                 </div>

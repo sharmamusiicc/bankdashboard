@@ -94,38 +94,31 @@ const saveBankData = (data) => {
 };
 
 // ==================== LOGIN PAGE ====================
-
-if (document.getElementById('loginForm')) {
-    console.log('Login page detected');
-    initializeDefaultData();
+function handleLogin(event) {
+    event.preventDefault(); // Prevent form from submitting and page reloading
     
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        console.log('Login form submitted');
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        console.log('Username:', username);
-        console.log('Password:', password);
-        
-        if (username === 'demo' && password === 'demo123') {
-            console.log('Login successful!');
-            localStorage.setItem('userLoggedIn', 'true');
-            
-            const submitBtn = this.querySelector('button[type=\\"submit\\"]');
-            submitBtn.textContent = 'Signing in...';
-            submitBtn.style.opacity = '0.7';
-            
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1000);
-        } else {
-            alert('Invalid credentials! Please use demo/demo123');
-            console.log('Login failed');
-        }
-    });
+    // Get values from input fields
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Simple validation
+    if (username === '' || password === '') {
+        alert('Please enter both username and password.');
+        return false;
+    }
+
+    // Demo credentials validation
+    if (username === 'demo' && password === 'demo123') {
+        alert('Login successful!');
+        // Redirect to a new page (for example, a dashboard)
+        window.location.href = 'dashboard.html';  // Modify the URL as needed
+    } else {
+        alert('Invalid credentials. Please try again.');
+    }
+
+    return false; // Prevent the form from submitting
 }
+
 
 // ==================== DASHBOARD ====================
 

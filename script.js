@@ -118,7 +118,7 @@ if (document.getElementById('loginForm')) {
             submitBtn.style.opacity = '0.7';
             
             setTimeout(() => {
-                window.location.href = 'FINAL_dashboard.html';
+                window.location.href = 'dashboard.html';
             }, 1000);
         } else {
             alert('Invalid credentials! Please use demo/demo123');
@@ -135,7 +135,7 @@ if (document.querySelector('.dashboard-body')) {
     // Check if user is logged in
     if (!localStorage.getItem('userLoggedIn')) {
         console.log('User not logged in, redirecting...');
-        window.location.href = 'FINAL_index.html';
+        window.location.href = 'index.html';
     } else {
         console.log('User is logged in');
     }
@@ -850,7 +850,7 @@ if (document.querySelector('.dashboard-body')) {
             if (confirm('Are you sure you want to logout?')) {
                 console.log('User logged out');
                 localStorage.removeItem('userLoggedIn');
-                window.location.href = 'FINAL_index.html';
+                window.location.href = 'index.html';
             }
         });
     }

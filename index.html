@@ -29,8 +29,8 @@
                 
                 <h1>Welcome Back</h1>
                 <p class="subtitle">Enter your credentials to access your account</p>
-                
-                <form id="loginForm" class="login-form">
+
+<form id="loginForm" class="login-form" onsubmit="return handleLogin(event)">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -56,6 +56,8 @@
                         <p>Username: <code>demo</code> | Password: <code>demo123</code></p>
                     </div>
                 </form>
+                
+                
                 
                 <div class="login-footer">
                     <p>Don't have an account? <a href="#">Sign up</a></p>
